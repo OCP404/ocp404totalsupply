@@ -1,6 +1,7 @@
 const express = require('express');
 const Web3 = require('web3');
 const app = express();
+const cors = require('cors');
 const port = 3000;
 
 // Initialize Web3 with Ethereum mainnet provider
@@ -731,6 +732,8 @@ const abi = [
 
 // Initialize contract
 const contract = new web3.eth.Contract(abi, contractAddress);
+
+app.use(cors());
 
 app.get('/api/totalSupply', async (req, res) => {
   try {
